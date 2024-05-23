@@ -2,37 +2,23 @@
 
 ## Configuração Inicial do Ambiente
 
-### Docker
+### Arquitetura da Aplicação
+Inicialmente, decidi adotar uma arquitetura simples para a aplicação de Comentários em versão API. Optei por uma abordagem baseada em microsserviços, com um único serviço responsável por gerenciar os comentários. Essa escolha foi feita levando em consideração a modularidade, escalabilidade e facilidade de manutenção.
 
-- **Decisão**: Utilizar Docker para criar um ambiente de desenvolvimento isolado e consistente.
-- **Motivação**: Docker garante que a aplicação rodará da mesma forma em qualquer máquina ou ambiente, eliminando problemas de "funciona na minha máquina".
-- **Implementação**: Criar um `Dockerfile` para a aplicação Flask, definindo as dependências e configurando a exposição da porta 8000.
+### Tecnologias Utilizadas
+**DockerFile**: Utilizei o Docker para facilitar o processo de empacotamento e distribuição da aplicação. O DockerFile é responsável por definir os passos necessários para criar uma imagem Docker contendo a aplicação.
 
-### Rodando o container
+**Kubernetes**: A escolha do Kubernetes se deve a um pré requisito de aceite do desafio mas de qualquer forma iria utiliza-lo como plataforma de orquestração de contêineres para implantar e gerenciar minha aplicação em um ambiente de produção, por conta do conhecimento que eu tenho com a ferramenta, alem dele oferecer escalabilidade, resiliência e facilidade de gerenciamento.
 
-- **Motivação**: Facilitar a criação de um ambiente de execução consistente e reprodutível.
-- **Passos**:
-  1.  **Buildando o container**: Para buildar o seu projeto dentro de um container, abra o terminal dentro do repositorio que contem o seu Dockerfile e digite `docker build <nome do seu container>:<versao>`.
-  2. **Rodando o container**: Após buildar o seu projeto basta digitar `docker run -p <porta de entrada:porta do container> <nome do seu container que foi dado no momento do build>:<versao> indicada no momento do build`.
+**Minikube**: Para facilitar o desenvolvimento e teste local, optei por utilizar o Minikube, que me permite executar um cluster Kubernetes localmente, simulando assim um ambiente de produção
 
-### Minikube
-
-- **Decisão**: Optei por utilizar o Minikube como minha solução de Kubernetes local por se tratar da ferramenta que eu tenho mais familiaridade.
-
-- **Implementação**: Apos realizar a instalação do Minikube que você pode seguir através da documentação oficial https://minikube.sigs.k8s.io/docs/start/ basta digitar no terminal de sua maquina o seguinte comando `minikube start`, caso queira ver visualmente ou até mesmo gereciar o cluster de forma mais facil basta `minikube dashboard`.
-
-### Kubernetes
-
-- **Motivação**: O Kubernetes oferece capacidades avançadas de orquestração de contêineres, proporcionando escalabilidade e gerenciamento simplificado.
-- **Passos**:
-  1. **Criação de arquivos de maniesto**: Crie arquivos YAML que descrevem os recursos que você deseja implantar, como deployments, services, etc.
-  2. **Aplicação dos recursos com kubectl apply**: Use o comando kubectl apply -f <arquivo.yaml> para aplicar os recursos definidos no arquivo YAML ao cluster Kubernetes. Neste caso você pode executar `kubectl apply -f deployment.yaml -f service.yaml`.
-  3. **Verificação da implantação**: Após aplicar os recursos, você pode verificar se foram implantados corretamente usando o comando kubectl get <recurso> para listar os recursos criados. Por exemplo, `kubectl get pods` para listar os pods implantados.
-  4. **Atualização dos recursos**: Se você precisar atualizar os recursos após fazer alterações nos arquivos de manifesto, basta aplicar os arquivos atualizados novamente usando o mesmo comando `kubectl apply -f nome do arquivo .yaml que foi alterado`.
-
+**Grafana e Prometheus**: Para monitoramento e métricas da aplicação, integramos o Grafana e o Prometheus ao ambiente construido. O Prometheus é responsável por coletar métricas da aplicação e o Grafana fornece visualizações e dashboards para análise e monitoramento em tempo real.
 
 ## Pensamentos
 - A ideia inical é colocar para rodar dentro de um container
 - Após a ideia inicial ser feita já coloquei pra rodar em um cluster Kubernetes usando um Minikube local
 - Agora que eu tenho um cluster Kubernetes onde a aplicação principal esta rodando, coloquei um grafana para rodar dentro deste cluster
-- O proximo passo é implementar o Prometheus para assim exportar as metricas da aplicação dentro do Grafana...
+- O proximo passo é implementar o Prometheus para assim exportar as metricas da aplicação dentro do Grafana
+- Grafana e Prometheus foram implementados e estão rodando dentro do cluster
+- Futuramente quero implementar o zabbix como ferramenta central de monitoramento, gerando assim alertas caso seja identificado erros que estão vindo do Prometheus.
+- Proximo passo acredito que eu vou criar a pipeline CI/CD com Github Actions

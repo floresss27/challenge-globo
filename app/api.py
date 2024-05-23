@@ -1,11 +1,18 @@
-from flask import Flask
-from flask import jsonify
-from flask import request
-
+from flask import Flask, jsonify, request
+from prometheus_flask_exporter import PrometheusMetrics
 
 app_name = 'comentarios'
 app = Flask(app_name)
 app.debug = True
+
+# Configure PrometheusMetrics
+metrics = PrometheusMetrics(app)
+metrics.info('app_info', 'Informações da Aplicação', version='1.0.0')
+
+# Métrica customizada para contar a quantidade de comentários por content ID
+comments_counter = metrics.counter(
+    'comments_total', 'Número total de comentários por content ID', labels={'content_id': lambda: request.args.get('content_id')}
+)
 
 comments = {}
 
@@ -18,9 +25,9 @@ def api_comment_new():
     content_id = '{}'.format(request_data['content_id'])
 
     new_comment = {
-            'email': email,
-            'comment': comment,
-            }
+        'email': email,
+        'comment': comment,
+    }
 
     if content_id in comments:
         comments[content_id].append(new_comment)
@@ -29,9 +36,9 @@ def api_comment_new():
 
     message = 'comment created and associated with content_id {}'.format(content_id)
     response = {
-            'status': 'SUCCESS',
-            'message': message,
-            }
+        'status': 'SUCCESS',
+        'message': message,
+    }
     return jsonify(response)
 
 
@@ -44,9 +51,9 @@ def api_comment_list(content_id):
     else:
         message = 'content_id {} not found'.format(content_id)
         response = {
-                'status': 'NOT-FOUND',
-                'message': message,
-                }
+            'status': 'NOT-FOUND',
+            'message': message,
+        }
         return jsonify(response), 404
 
 if __name__ == '__main__':
