@@ -29,3 +29,10 @@
   2. **Aplicação dos recursos com kubectl apply**: Use o comando kubectl apply -f <arquivo.yaml> para aplicar os recursos definidos no arquivo YAML ao cluster Kubernetes. Neste caso você pode executar `kubectl apply -f deployment.yaml -f service.yaml`.
   3. **Verificação da implantação**: Após aplicar os recursos, você pode verificar se foram implantados corretamente usando o comando kubectl get <recurso> para listar os recursos criados. Por exemplo, `kubectl get pods` para listar os pods implantados.
   4. **Atualização dos recursos**: Se você precisar atualizar os recursos após fazer alterações nos arquivos de manifesto, basta aplicar os arquivos atualizados novamente usando o mesmo comando `kubectl apply -f nome do arquivo .yaml que foi alterado`.
+
+
+## Pensamentos
+- A ideia inical é colocar para rodar dentro de um container
+- Após a ideia inicial ser feita já coloquei pra rodar em um cluster Kubernetes usando um Minikube local
+- Agora que eu tenho um cluster Kubernetes onde a aplicação principal esta rodando, coloquei um grafana para rodar dentro deste cluster
+- O proximo passo é implementar o Prometheus para assim exportar as metricas da aplicação dentro do Grafana...
