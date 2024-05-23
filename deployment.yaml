@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comentarios-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comentarios-api
+  template:
+    metadata:
+      labels:
+        app: comentarios-api
+    spec:
+      containers:
+      - name: comentarios-api
+        image: floresss/challenge:latest
+        ports:
+        - containerPort: 8000
