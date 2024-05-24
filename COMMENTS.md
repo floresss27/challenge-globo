@@ -21,4 +21,6 @@ Inicialmente, decidi adotar uma arquitetura simples para a aplicação de Coment
 - O proximo passo é implementar o Prometheus para assim exportar as metricas da aplicação dentro do Grafana
 - Grafana e Prometheus foram implementados e estão rodando dentro do cluster
 - Futuramente quero implementar o zabbix como ferramenta central de monitoramento, gerando assim alertas caso seja identificado erros que estão vindo do Prometheus.
-- Proximo passo acredito que eu vou criar a pipeline CI/CD com Github Actions
+- O meu próximo passo seria, criar a pipeline CI/CD com Github Actions, mas ainda estou ponderando sobre como realizar a construção da pipeline. Acredito que devo focar na construção do CI/CD para a API, em vez de querer integrar todos os serviços como Grafana, Prometheus e Minikube de uma vez em um É por isso que estava demorando um pouco para progredir, pois ainda não havia definido o caminho a seguir.
+- Buscando deixar o mais proximo de um ambiente de produção, estou subindo um cluster kubernetes no GCP (vou subir manualmente de inicio, pois nunca utilizei o GCP)
+- Apos eu conseguir subir o cluster e realizar o deploy da aplicação dentro dele, eu atualizo a parte das tecnologias utilizadas
