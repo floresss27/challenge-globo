@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: comentarios-api
+  name: api-comments
   namespace: api-comments
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: comentarios-api
+      app: api-comments
   template:
     metadata:
       labels:
-        app: comentarios-api
+        app: api-comments
     spec:
       containers:
-      - name: comentarios-api
-        image: floresss/challenge:latest
+      - name: api-comments
+        image: floresss/api-comments:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
