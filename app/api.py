@@ -5,11 +5,9 @@ app_name = 'comentarios'
 app = Flask(app_name)
 app.debug = True
 
-# Configure PrometheusMetrics
 metrics = PrometheusMetrics(app)
 metrics.info('app_info', 'Informações da Aplicação', version='1.0.0')
 
-# Métrica customizada para contar a quantidade de comentários por content ID
 comments_counter = metrics.counter(
     'comments_total', 'Número total de comentários por content ID', labels={'content_id': lambda: request.args.get('content_id')}
 )
@@ -55,6 +53,14 @@ def api_comment_list(content_id):
             'message': message,
         }
         return jsonify(response), 404
+    
+@app.route('/api/comment/status')
+def status():
+    message = 'ok'
+    response = {
+    'message': message,
+    }
+    return jsonify(response), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
