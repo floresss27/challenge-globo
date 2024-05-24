@@ -8,9 +8,7 @@ Inicialmente, decidi adotar uma arquitetura simples para a aplicação de Coment
 ### Tecnologias Utilizadas
 **DockerFile**: Utilizei o Docker para facilitar o processo de empacotamento e distribuição da aplicação. O DockerFile é responsável por definir os passos necessários para criar uma imagem Docker contendo a aplicação.
 
-**Kubernetes**: A escolha do Kubernetes se deve a um pré requisito de aceite do desafio mas de qualquer forma iria utiliza-lo como plataforma de orquestração de contêineres para implantar e gerenciar minha aplicação em um ambiente de produção, por conta do conhecimento que eu tenho com a ferramenta, alem dele oferecer escalabilidade, resiliência e facilidade de gerenciamento.
-
-**Minikube**: Para facilitar o desenvolvimento e teste local, optei por utilizar o Minikube, que me permite executar um cluster Kubernetes localmente, simulando assim um ambiente de produção
+**Kubernetes no GCP**: Escolhi o Kubernetes como plataforma de orquestração de contêineres devido ao seu pré-requisito no desafio e por suas características de escalabilidade, resiliência e facilidade de gerenciamento. Inicialmente, utilizei o Minikube para desenvolvimento local e, posteriormente, migrei para um cluster Kubernetes no Google Cloud Platform (GCP) para simular um ambiente de produção.
 
 **Grafana e Prometheus**: Para monitoramento e métricas da aplicação, integramos o Grafana e o Prometheus ao ambiente construido. O Prometheus é responsável por coletar métricas da aplicação e o Grafana fornece visualizações e dashboards para análise e monitoramento em tempo real.
 
@@ -24,3 +22,5 @@ Inicialmente, decidi adotar uma arquitetura simples para a aplicação de Coment
 - O meu próximo passo seria, criar a pipeline CI/CD com Github Actions, mas ainda estou ponderando sobre como realizar a construção da pipeline. Acredito que devo focar na construção do CI/CD para a API, em vez de querer integrar todos os serviços como Grafana, Prometheus e Minikube de uma vez em um É por isso que estava demorando um pouco para progredir, pois ainda não havia definido o caminho a seguir.
 - Buscando deixar o mais proximo de um ambiente de produção, estou subindo um cluster kubernetes no GCP (vou subir manualmente de inicio, pois nunca utilizei o GCP)
 - Apos eu conseguir subir o cluster e realizar o deploy da aplicação dentro dele, eu atualizo a parte das tecnologias utilizadas
+- Foi realizada com sucesso a criação do cluster Kubernetes dentro do GCP
+- Planejo realizar a criação da rota de status que retorne o texto “ok”;

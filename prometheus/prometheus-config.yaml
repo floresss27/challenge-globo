@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: prometheus-config
-  namespace: default
+  namespace: monitoring
 data:
   prometheus.yml: |
     global:
@@ -11,4 +11,4 @@ data:
     scrape_configs:
       - job_name: 'comentarios'
         static_configs:
-          - targets: ['comentarios-api-service.default.svc.cluster.local:8000']
+          - targets: ['comentarios-api-service.api-comments.svc.cluster.local:8000']

@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prometheus-server
-  namespace: default
+  name: prometheus
+  namespace: monitoring
 spec:
   replicas: 1
   selector:
