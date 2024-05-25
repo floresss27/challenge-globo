@@ -11,4 +11,4 @@ data:
     scrape_configs:
       - job_name: 'comentarios'
         static_configs:
-          - targets: ['comentarios-api-service.api-comments.svc.cluster.local:8000']
+          - targets: ['api-comments-service.api-comments.svc.cluster.local:8000']

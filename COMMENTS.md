@@ -24,3 +24,5 @@ Inicialmente, decidi adotar uma arquitetura simples para a aplicação de Coment
 - Apos eu conseguir subir o cluster e realizar o deploy da aplicação dentro dele, eu atualizo a parte das tecnologias utilizadas
 - Foi realizada com sucesso a criação do cluster Kubernetes dentro do GCP
 - Planejo realizar a criação da rota de status que retorne o texto “ok”;
+- Realizada a criação da rota status
+- Vou realizar a criação de 2 scripts para simular as requisições dos usuários
