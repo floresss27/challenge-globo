@@ -4,15 +4,15 @@ import time
 import random
 
 def send_query():
-    url = "http://127.0.0.1:7111/api/comment/new"
+    url = "http://0.0.0.0:7111/api/comment/new"
 
     payload = json.dumps({
-    "email":"alice@example.com",
-    "comment":"ok, now I am gonna say something more useful",
-    "content_id":1
+    "email": "user@example.com",
+    "comment": "eu gosto da giovanna",
+    "content_id": 1
     })
     headers = {
-      'Content-Type': 'application/json'
+    'Content-Type': 'application/json'
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
