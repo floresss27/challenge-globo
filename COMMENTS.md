@@ -25,4 +25,5 @@ Inicialmente, decidi adotar uma arquitetura simples para a aplicação de Coment
 - Foi realizada com sucesso a criação do cluster Kubernetes dentro do GCP
 - Planejo realizar a criação da rota de status que retorne o texto “ok”;
 - Realizada a criação da rota status
-- Vou realizar a criação de 2 scripts para simular as requisições dos usuários
+- Vou realizar a criação de 3 scripts para simular as requisições dos usuários
+- Proximo passo é realizar a criação do CI/CD, dessa forma qualquer modificação na API após o commit sera gerada uma nova imagem, sendo assim removendo mais um processo que antes era manual
