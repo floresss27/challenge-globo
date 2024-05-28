@@ -1,3 +1,7 @@
 /env/
 .env
 .secrets
+/terraform/add-nodes-cluster/.terraform
+/terraform/add-nodes-cluster/terraform.tfstate
+/terraform/add-nodes-cluster/terraform.tfstate.backup
+/terraform/add-nodes-cluster/.terraform.lock.hcl

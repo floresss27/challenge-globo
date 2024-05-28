@@ -27,3 +27,4 @@ Inicialmente, decidi adotar uma arquitetura simples para a aplicação de Coment
 - Realizada a criação da rota status
 - Vou realizar a criação de 3 scripts para simular as requisições dos usuários
 - Proximo passo é realizar a criação do CI/CD, dessa forma qualquer modificação na API após o commit sera gerada uma nova imagem, sendo assim removendo mais um processo que antes era manual
+- Vou realizar a criação dos arquivos do terraform para automatizar a subida/deleção de nodes no cluster Kubernetes
