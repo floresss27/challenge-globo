@@ -8,10 +8,6 @@ app.debug = True
 metrics = PrometheusMetrics(app)
 metrics.info('app_info', 'Informações da Aplicação', version='1.0.0')
 
-comments_counter = metrics.counter(
-    'comments_total', 'Número total de comentários por content ID', labels={'content_id': lambda: request.args.get('content_id')}
-)
-
 comments = {}
 
 @app.route('/api/comment/new', methods=['POST'])
