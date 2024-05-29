@@ -4,7 +4,7 @@ import time
 import random
 
 def send_query():
-    url = "http://127.0.0.1:7111/api/comment/status"
+    url = "http://comments.devops-challenge.globo.local:8000/api/comment/status"
 
     response = requests.request("GET", url)
 
